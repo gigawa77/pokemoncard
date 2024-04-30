@@ -1,25 +1,25 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function PokeSearch({newPokemon}){
-    const [newSearchTerm, setNewSearchTerm] = useState("")
+function PokeSearch({ setNewSearchTerm }) {
+  const [input, setInput] = useState("");
 
-    const handleSubmit = (event)=>{
-        event.preventDefault()
-        console.log("submitting:", newSearchTerm)
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitting:");
+    setNewSearchTerm(input);
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
-        <label >
-            
-        </label>
-        <br></br>
-            <input id = "pokeSearch" type="text" placeholder="Enter pokemon here..." >
-            </input>
-            <button type="submit" >
-                Search
-            </button>
-    </form>)
+  return (
+    <form onSubmit={handleSubmit}>
+      <label></label>
+      <br></br>
+      <input
+        placeholder="Enter pokemon here..."
+        onChange={(event) => setInput(event.target.value)}
+      ></input>
+      <button type="submit">Search</button>
+    </form>
+  );
 }
 
-export default PokeSearch
+export default PokeSearch;

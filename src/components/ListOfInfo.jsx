@@ -1,5 +1,3 @@
-function ListOfInfo(){
-    
-}
+function ListOfInfo() {}
 
-export default ListOfInfo
+export default ListOfInfo;
