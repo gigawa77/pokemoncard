@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ListOfInfo from "./ListOfInfo";
 
-function IdNameImg(props) {
-  const { newSearchTerm } = props;
+function IdNameImg({ newSearchTerm }) {
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,6 @@ function IdNameImg(props) {
         .get(`https://pokeapi.co/api/v2/pokemon/${newSearchTerm}`)
         .then((response) => {
           setPokemon(response.data);
-          // console.log(setPokemon(response.data));
         })
         .catch((err) => {
           if (err) {
@@ -34,12 +33,13 @@ function IdNameImg(props) {
             src={pokemon.sprites.front_default}
             alt={`${pokemon.name} sprite`}
           />
+          <ListOfInfo pokemon={pokemon} />
         </>
       ) : (
         <>
           <p>Please enter a pokemon name</p>
           <img
-            className="Pokeball"
+            id="Pokeball"
             src="https://ssb.wiki.gallery/images/7/7b/Pok%C3%A9_Ball_Origin.png"
             alt="Pokeball"
           />
