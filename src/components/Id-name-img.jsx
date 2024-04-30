@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ListOfInfo from "./ListOfInfo";
 
-function IdNameImg({ newSearchTerm }) {
+function IdNameImg({ newSearchTerm, shiny }) {
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
@@ -21,18 +21,26 @@ function IdNameImg({ newSearchTerm }) {
   }, [newSearchTerm]);
 
   return (
-    <div>
+    <div className="card">
       {pokemon ? (
         <>
           <h1 id="pokemon_id">{`Pokemon Name: #${pokemon.id} ${
             pokemon.name[0].toUpperCase() + pokemon.name.substring(1)
           }`}</h1>
           <br />
-          <img
-            className="pokemonimg"
-            src={pokemon.sprites.front_default}
-            alt={`${pokemon.name} sprite`}
-          />
+          {shiny ? (
+            <img
+              className="pokemonimg"
+              src={pokemon.sprites.front_default}
+              alt={`${pokemon.name} sprite`}
+            />
+          ) : (
+            <img
+              className="pokemonimg"
+              src={pokemon.sprites.front_shiny}
+              alt={`${pokemon.name} sprite`}
+            />
+          )}
           <ListOfInfo pokemon={pokemon} />
         </>
       ) : (

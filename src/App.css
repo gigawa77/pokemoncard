@@ -4,3 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
+
+.pokemonimg {
+  width: 300px;
+}
+
+.card {
+  border-style: solid;
+}
